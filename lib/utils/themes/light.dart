@@ -60,5 +60,20 @@ ThemeData light(BuildContext context) {
         ),
       ),
     ),
+    iconButtonTheme: IconButtonThemeData(
+      style: IconButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: defaultBorderRadius,
+        ),
+      ),
+    ),
+    checkboxTheme: CheckboxThemeData(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4.0),
+      ),
+      checkColor: MaterialStateProperty.all(primary),
+      fillColor: MaterialStateProperty.all(primary),
+      splashRadius: 8.0,
+    ),
   );
 }

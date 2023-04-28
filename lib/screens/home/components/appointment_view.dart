@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:miabekinedoctor/models/appointment.dart';
 
 import '../../../utils/themes/light.dart';
+import '../../../widget/avatar.dart';
 
-class ConsultationView extends StatelessWidget {
-  const ConsultationView({Key? key}) : super(key: key);
+class AppointmentView extends StatelessWidget {
+  final Appointment appointment;
+
+  const AppointmentView({Key? key, required this.appointment})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           "08:00",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.titleMedium,
         ),
         const SizedBox(width: 24.0),
         Expanded(
@@ -28,33 +33,40 @@ class ConsultationView extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CircleAvatar(radius: 28),
-                    const SizedBox(width: 12.0),
+                    Avatar(
+                      radius: 28,
+                      url: appointment.patientImage,
+                    ),
+                    const SizedBox(width: 8.0),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Arianna Grande",
+                          appointment.patientName,
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
-                        SizedBox(height: 2.0),
-                        Text(
+                        const SizedBox(height: 2.0),
+                        const Text(
                           "il y a 23min",
                           style: TextStyle(color: Colors.black54),
                         ),
-                        SizedBox(height: 16.0),
-                        Text(
+                        const SizedBox(height: 16.0),
+                        const Text(
                           "En attente de validation",
                           style: TextStyle(color: Colors.black54),
                         ),
                       ],
+                    ),
+                    Checkbox(
+                      value: false,
+                      onChanged: (value) {},
                     )
                   ],
                 )
               ],
             ),
           ),
-        )
+        ),
       ],
     );
   }
